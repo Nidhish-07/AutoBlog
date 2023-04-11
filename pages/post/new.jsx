@@ -1,5 +1,6 @@
 import { withPageAuthRequired } from "@auth0/nextjs-auth0";
 import React from "react";
+import Layout from "../../components/layout/Layout";
 
 const NewPost = (props) => {
   console.log(props);
@@ -8,9 +9,12 @@ const NewPost = (props) => {
 
 export default NewPost;
 
+NewPost.getLayout = function getLayout(page, pageProps) {
+  return <Layout {...pageProps}>{page}</Layout>;
+};
+
 export const getServerSideProps = withPageAuthRequired(() => {
   return {
-    props: {
-    },
+    props: {},
   };
 });
